@@ -8,20 +8,69 @@ Frontend Plugins Communications
 Purpose
 -------
 
-The MFE communications will use plugins to be installed with this we should update the plugins instead of the MFE
+Following the (`Frontend Pluggability Summit <https://discuss.openedx.org/t/frontend-pluggability-summit/11167>`_) for the MFE's in Open edX, the main idea is to use a mechanism of extension. 
+In this case, it will be for the MFE communications. (`Here is the implementation <https://github.com/openedx/frontend-app-communications/pull/184>`_) mechanism of extension, the bulk email form is divided into small pieces called "slots" that will be the plugin. 
+We should be updating the plugins instead of the MFE. This way, every component that needs that extension mechanism will be reusable and maintainable.
 
-Plugins list
+
+Plugins List
 ------------
 
-- **communications-app-body-email-form**: `NPM Package <https://www.npmjs.com/package/@edunext/plugins-communications-app-body-email-form>`_
-- **communications-app-individual-emails**: `NPM Package <https://www.npmjs.com/package/@edunext/plugins-communications-app-individual-emails>`_
-- **communications-app-instructions-pro-freading**: `NPM Package <https://www.npmjs.com/package/@edunext/plugins-communications-app-instructions-pro-freading>`_
-- **communications-app-recipients-checks**: `NPM Package <https://www.npmjs.com/package/@edunext/plugins-communications-app-recipients-checks>`_
-- **communications-app-schedule-section**: `NPM Package <https://www.npmjs.com/package/@edunext/plugins-communications-app-schedule-section>`_
-- **communications-app-subject-form**: `NPM Package <https://www.npmjs.com/package/@edunext/plugins-communications-app-subject-form>`_
-- **communications-app-task-alert-modal**: `NPM Package <https://www.npmjs.com/package/@edunext/plugins-communications-app-task-alert-modal>`_
-- **communications-app-team-emails**: `NPM Package <https://www.npmjs.com/package/@edunext/plugins-communications-app-team-emails>`_
+**communications-app-body-email-form**
+   :NPM Package: `communications-app-body-email-form <https://www.npmjs.com/package/@edunext/plugins-communications-app-body-email-form>`_
+   :Description: Contains the text editor for sending emails in the MFE communications.
+   :Image: 
+    .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/body_form_plugin.png
+        :alt: communications-app-body-email-form Image
 
+**communications-app-individual-emails**
+   :NPM Package: `communications-app-individual-emails <https://www.npmjs.com/package/@edunext/plugins-communications-app-individual-emails>`_
+   :Description: Custom plugin not in the default communications MFE. This contains a checkbox to add specific student emails; it has an autocomplete field to filter them by username, email, or student name.
+   :Image: 
+    .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/individual_learners_plugin.png
+        :alt: communications-app-individual-emails Image
+
+**communications-app-instructions-pro-freading**
+   :NPM Package: `communications-app-instructions-pro-freading <https://www.npmjs.com/package/@edunext/plugins-communications-app-instructions-pro-freading>`_
+   :Description: Recommendations for sending an email in the communications MFE are down to the text editor.
+   :Image: 
+    .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/proofreading_plugin.png
+        :alt: communications-app-instructions-pro-freading Image
+
+**communications-app-recipients-checks**
+   :NPM Package: `communications-app-recipients-checks <https://www.npmjs.com/package/@edunext/plugins-communications-app-recipients-checks>`_
+   :Description: Contains the list of recipients to send an email in the communications MFE.
+   :Image: 
+    .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/recipients_plugin.png
+        :alt: communications-app-recipients-checks Image
+
+**communications-app-schedule-section**
+   :NPM Package: `communications-app-schedule-section <https://www.npmjs.com/package/@edunext/plugins-communications-app-schedule-section>`_
+   :Description: Contains a section to schedule the email to end with a date and time; it's an option for sending it.
+   :Image: 
+    .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/schedule_section_plugin.png
+        :alt: communications-app-schedule-section Image
+
+**communications-app-subject-form**
+   :NPM Package: `communications-app-subject-form <https://www.npmjs.com/package/@edunext/plugins-communications-app-subject-form>`_
+   :Description: Contains the field subject to send in the communications MFE.
+   :Image: 
+    .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/subject_plugin.png
+        :alt: communications-app-subject-form Image
+
+**communications-app-task-alert-modal**
+   :NPM Package: `communications-app-task-alert-modal <https://www.npmjs.com/package/@edunext/plugins-communications-app-task-alert-modal>`_
+   :Description: When the email form is submitted, show an alert to confirm the information to be sent in the email; this alert contains the field subject to send in the communications MFE.
+   :Image: 
+    .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/alert_modal_plugin.png
+        :alt: communications-app-task-alert-modal Image
+
+**communications-app-team-emails**
+   :NPM Package: `communications-app-team-emails <https://www.npmjs.com/package/@edunext/plugins-communications-app-team-emails>`_
+   :Description: Custom plugin not in the default communications MFE. This contains a list of checkboxes to add specific teams to select; the email will be sent to all the students in the teams selected.
+   :Image: 
+    .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/teams_plugin.png
+        :alt: communications-app-team-emails Image
 
 
 
@@ -37,7 +86,7 @@ You can install the plugins locally by running these following commands
       git clone -b jv/feat-send-team-emails-pluggable https://github.com/eduNEXT/frontend-app-communications.git
       cd frontend-app-communications
 
-   If you already have `frontend-app-communications`:
+   If you already have ``frontend-app-communications``:
 
    .. code-block:: bash
 
@@ -65,6 +114,133 @@ You can install the plugins locally by running these following commands
 
       cd frontend-app-communications
       npm start
+
+
+
+How to Create a New Plugin
+--------------------------
+
+1. Clone the branch with the default pluggable plugin:
+
+   .. code-block:: bash
+
+      git clone -b jv/pluggable-component-slot https://github.com/eduNEXT/frontend-app-communications.git
+      cd frontend-app-communications
+
+   If you already have ``frontend-app-communications``:
+
+   .. code-block:: bash
+
+      cd frontend-app-communications
+      git remote add edunext https://github.com/eduNEXT/frontend-app-communications.git
+      git fetch edunext jv/pluggable-component-slot
+      git checkout jv/pluggable-component-slot
+
+2. Create a new plugin:
+
+   2.1 Create a new folder inside this folder ``/plugins/communications-app``
+
+   The plugin must have an  ``index.jsx`` and ``package.json`` file.
+
+   .. code-block:: bash
+
+      cd /plugins/communications-app && mkdir -p PluginExample
+
+  2.2 Create a new file inside this folder ``/plugins/communications-app/PluginExample`` 
+   ``package.json``  with the following content:
+
+   .. code-block:: json
+
+        {
+            "name": "@openedx-plugins/communications-app-example-plugin",
+            "version": "1.0.0",
+            "description": "",
+            "scripts": {
+                "test": "echo \"Error: no test specified\" && exit 1"
+            },
+            "peerDependencies": {
+                "@edx/frontend-app-communications": "*",
+                "@edx/frontend-platform": "*",
+                "@edx/paragon": "*",
+                "prop-types": "*",
+                "react": "*"
+            },
+            "peerDependenciesMeta": {
+                "@edx/frontend-app-communications": {
+                    "optional": true
+                }
+            },
+            "author": "",
+            "license": "ISC"
+        }
+
+   and an  ``index.jsx`` file with this content:
+
+   .. code-block:: jsx
+
+        import React from 'react';
+
+        const PluginExample = () => (
+            <div style={{ backgroundColor: 'red', padding: 16 }}>
+                <h1 style={{ color: 'white' }}>
+                    @openedx-plugins/communications-app-example-plugin
+                </h1>
+            </div>
+        );
+
+        export default PluginExample;
+
+
+3. Use the plugin with the extension mechanism:
+
+   Go to  ``src/components/page-container`` and add the following code:
+
+   .. code-block:: jsx
+
+        import PluggableComponent from '../PluggableComponent';
+
+   Then add it somewhere in this example; it will be in the container:
+
+   .. code-block:: jsx
+
+        <div className="pb-3 container">
+
+            <PluggableComponent
+                id="example-plugin"
+                as="communications-app-example-plugin"
+            />
+            <main id="main-content">{children}</main>
+        </div>
+
+4. Install the plugin in the ``package.json`` of the MFE, in this case, the communications MFE.
+   Add this to your dependencies:
+
+   .. code-block:: json
+
+        {
+            "dependencies": {
+                ...other dependencies
+                "@openedx-plugins/communications-app-example-plugin": "file:plugins/communications-app/PluginExample"
+            }
+        }
+
+   Then install the dependency:
+
+   .. code-block:: bash
+
+        npm install @openedx-plugins/communications-app-example-plugin
+
+5. Run the MFE:
+
+   .. code-block:: bash
+
+        npm start
+
+Now you should see something like this:
+
+.. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/example_plugin.png
+   :alt: Plugin Example Image
+
 
 
 
@@ -99,7 +275,7 @@ For production, you can create a Tutor plugin with the following configuration:
 Recommendations
 ---------------
 
-For now, the plugins need to be transpiled by Babel to generate the configuration. Each plugin has a file called "Makefile" that will generate the transpiled version of the plugin.
+For now, the plugins need to be transpiled by Babel to generate the configuration. Each plugin has a file called  ``"Makefile"`` that will generate the transpiled version of the plugin.
 
 After installing dependencies of the plugin:
 
@@ -109,5 +285,5 @@ After installing dependencies of the plugin:
     npm run install
     make build
 
-The Makefile will create a folder called "package" that will be the npm package to be updated to npm, and another folder called "dist" that will be the transpiled version of the plugin.
+The Makefile will create a folder called ``"package"`` that will be the npm package to be updated to npm, and another folder called ``"dist"``  that will be the transpiled version of the plugin.
 

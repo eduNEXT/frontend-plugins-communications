@@ -28,8 +28,8 @@ Plugins List
     .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/individual_learners_plugin.png
         :alt: communications-app-individual-emails Image
 
-**communications-app-instructions-proof-reading**
-   :NPM Package: `communications-app-instructions-proof-reading <https://www.npmjs.com/package/@edunext/plugins-communications-app-instructions-proof-reading>`_
+**communications-app-instructions-pro-freading**
+   :NPM Package: `communications-app-instructions-proof-reading <https://www.npmjs.com/package/@edunext/plugins-communications-app-instructions-pro-freading>`_
    :Description: Recommendations for sending an email in the communications MFE are down to the text editor.
    :Image: 
     .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/proofreading_plugin.png

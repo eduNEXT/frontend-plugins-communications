@@ -8,10 +8,8 @@ Frontend Plugins Communications
 Purpose
 -------
 
-Following the (`Frontend Pluggability Summit <https://discuss.openedx.org/t/frontend-pluggability-summit/11167>`_) for the MFE's in Open edX, the main idea is to use a mechanism of extension. 
-In this case, it will be for the MFE communications. (`Here is the implementation <https://github.com/openedx/frontend-app-communications/pull/184>`_) mechanism of extension, the bulk email form is divided into small pieces called "slots" that will be the plugin. 
-We should be updating the plugins instead of the MFE. This way, every component that needs that extension mechanism will be reusable and maintainable.
-
+As part of the `Frontend Pluggability Summit <https://discuss.openedx.org/t/frontend-pluggability-summit/11167>`_ in late 2023, the Open edX community was encouraged to adopt a new extensions mechanism for MFEs in the Open edX ecosystem. Therefore,
+this initiative of extending the Communications MFE was born. The idea is to use one of the extension mechanisms presented in the summit, in our case, it's the UI Slots approach, to make the MFE more suitable across the board for community usage, making the extending MFE more maintainable in the long run. `Here is the implementation <https://github.com/openedx/frontend-app-communications/pull/184>`_ of the extensions mechanism mentioned above. In that Pull Request, the bulk email form is divided into small pieces called "slots" where the plugins will be hooked at build time. 
 
 Plugins List
 ------------
@@ -39,35 +37,35 @@ Plugins List
 
 **communications-app-recipients-checks**
    :NPM Package: `communications-app-recipients-checks <https://www.npmjs.com/package/@edunext/plugins-communications-app-recipients-checks>`_
-   :Description: Contains the list of recipients to send an email in the communications MFE.
+   :Description: Contains the list of recipients to email in the communications MFE.
    :Image: 
     .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/recipients_plugin.png
         :alt: communications-app-recipients-checks Image
 
 **communications-app-schedule-section**
    :NPM Package: `communications-app-schedule-section <https://www.npmjs.com/package/@edunext/plugins-communications-app-schedule-section>`_
-   :Description: Contains a section to schedule the email to end with a date and time; it's an option for sending it.
+   Description: A section with an option to schedule an email on a specific date and time.
    :Image: 
     .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/schedule_section_plugin.png
         :alt: communications-app-schedule-section Image
 
 **communications-app-subject-form**
    :NPM Package: `communications-app-subject-form <https://www.npmjs.com/package/@edunext/plugins-communications-app-subject-form>`_
-   :Description: Contains the field subject to send in the communications MFE.
+   :Description: Contains the field `subject` in the email form.
    :Image: 
     .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/subject_plugin.png
         :alt: communications-app-subject-form Image
 
 **communications-app-task-alert-modal**
    :NPM Package: `communications-app-task-alert-modal <https://www.npmjs.com/package/@edunext/plugins-communications-app-task-alert-modal>`_
-   :Description: When the email form is submitted, show an alert to confirm the information to be sent in the email; this alert contains the field subject to send in the communications MFE.
+   :Description: When the email form is submitted, shows an alert to confirm the information to be sent in the email; this alert contains the field `subject` from the email form.
    :Image: 
     .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/alert_modal_plugin.png
         :alt: communications-app-task-alert-modal Image
 
 **communications-app-team-emails**
    :NPM Package: `communications-app-team-emails <https://www.npmjs.com/package/@edunext/plugins-communications-app-team-emails>`_
-   :Description: Custom plugin not in the default communications MFE. This contains a list of checkboxes to add specific teams to select; the email will be sent to all the students in the teams selected.
+   :Description: Not in the default communications MFE. This plugin contains a list of checkboxes to add specific teams as email recipients; when sent the email will be sent to all the students in the teams selected.
    :Image: 
     .. image:: https://raw.githubusercontent.com/eduNEXT/frontend-plugins-communications/main/screenshots/teams_plugin.png
         :alt: communications-app-team-emails Image
@@ -77,7 +75,7 @@ Plugins List
 Getting Started
 ---------------
 
-You can install the plugins locally by running these following commands
+You can install the plugins locally by running the following commands:
 
 1. Clone the branch with the plugins
 
